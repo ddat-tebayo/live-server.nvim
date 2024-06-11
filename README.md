@@ -1,4 +1,8 @@
-# 📡 live-server.nvim :  Use the power of [live-server](https://www.npmjs.com/package/live-server) from NPM inside Neovim
+# 📡 live-server.nvim
+
+## ✨ Features
+- 📡 Use the power of [live-server](https://www.npmjs.com/package/live-server) from NPM inside Neovim
+- 🚥 **lualine component** : show live-server's connection status icon (click to toggle live-server).
 
 ## ⚡️ Requirements
 
@@ -36,13 +40,54 @@ require('live-server').setup{
 ```
 (See [live-server](https://github.com/tapio/live-server#usage-from-command-line) for more `liveserver_args` information)
 
+## 🚥 Using live-server as a component in lualine :
+- *⚠️ In order to display the live-server connection status icon in lualine, you must add the component to one of your lualine sections :*
+```lua
+-- lualine.nvim
+
+require("lualine").setup {
+    ...
+    sections = {
+        lualine_y = {
+            'another_component',
+            ...,
+            require('live-server.integration.lualine')
+        }
+    }
+}
+```
+- *and add your **live-server.nvim** configs or use the defaults with no arguments*
+```lua
+-- live-server.nvim
+-- "no arguments": come with the following defaults:
+ 
+require('live-server').setup{
+    liveserver_args = {},
+    integration = {
+        lualine = {
+            supported_filetypes = {"html", "css", "javascript", "javascriptreact"},
+            icons = {
+                disconnected = "󰄙",
+                connected = "󰄙"
+            },
+            colors = {
+                disconnected = "#559dd7", --blue
+                connected = "#00c234" --green
+            }
+        }
+    }
+}
+```
+
 ## 🚀 Usage
 
 - `:LiveServerStart` start the live-server
 - `:LiveServerStop` stop the live-server
 - `:LiveServerToggle` toggle the live-server
 
+Alternatively, you can also toggle live-server via clickable icon in lualine if you have [configured it](#-example-of-using-live-server-as-a-custom-component-in-lualine-).
+
 ## Special Thanks
 - 🤟 [this plugin](https://github.com/d-vegapunk/live-server.nvim) - a fork of ⤵️
-    -  💯 [barrett-ruth/live-server.nvim](https://github.com/barrett-ruth/live-server.nvim) - an awesome fork of ⤵️
-        - 💥 [aurum77/live-server.nvim](https://github.com/aurum77/live-server.nvim) - the first live-server port to neovim.
+    -  💯 [barrett-ruth/live-server.nvim](https://github.com/barrett-ruth/live-server.nvim) - a groundbreaking advancement from ⤵️
+        - 💥 [aurum77/live-server.nvim](https://github.com/aurum77/live-server.nvim) - a plugin to integrate live-server into Neovim.
