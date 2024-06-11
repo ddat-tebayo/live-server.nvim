@@ -54,6 +54,17 @@ M.start = function()
 end
 
 M.stop = function()
+    if is_running() then
+        local cached_dir = find_cached_dir()
+        if cached_dir then
+            vim.fn.jobstop(job_cache[cached_dir])
+            job_cache[cached_dir] = nil
+            log('live-server stopped', 'INFO')
+        end
+    else
+        log('live-server not running', 'WARN')
+    end
+    return
 end
 
 M.toggle = function()
