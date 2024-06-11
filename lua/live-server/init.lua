@@ -45,6 +45,11 @@ M.stop = function()
 end
 
 M.toggle = function()
+	if not utils.is_running() then
+		M.start()
+		return
+	end
+	M.stop()
 end
 
 M.setup = function(user_config)
