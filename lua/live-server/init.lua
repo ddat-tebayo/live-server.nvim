@@ -4,6 +4,19 @@ local M = {}
 
 M.default_config = {
 	liveserver_args = {},
+	integration = {
+		lualine = {
+			supported_filetypes = { "html", "css", "javascript", "javascriptreact" },
+			icons = {
+				disconnected = "󰄙",
+				connected = "󰄙"
+			},
+			colors = {
+				disconnected = "#559dd7",
+				connected = "#00c234"
+			}
+		}
+	}
 }
 
 M.start = function()
@@ -24,6 +37,12 @@ M.start = function()
 			local strippedOutput = output:gsub("\27%[%d;*%d*([mK])", "")
 			if string.match(strippedOutput, "http") then
 				utils.log(strippedOutput, "INFO")
+			end
+
+			-- Extract port for creating component in Lualine
+			local port = strippedOutput:match("http://[%w%.]+:(%d+)")
+			if port then
+				M.port = port
 			end
 		end,
 	})

@@ -23,4 +23,3 @@ M.is_running = function()
 end
 
 return M
-
