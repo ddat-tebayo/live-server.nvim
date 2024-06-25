@@ -87,7 +87,10 @@ require('live-server').setup{
 
 Alternatively, you can also toggle live-server via clickable icon in lualine if you have [configured it](#-example-of-using-live-server-as-a-custom-component-in-lualine-).
 
-## Special Thanks
+## 🎯 Goal(s)
+- The updated [bracey.vim](https://github.com/turbio/bracey.vim) for Neovim, written in Lua, that truly fits with the name `live`.
+
+## 📌 Special Thanks
 - 🤟 [this plugin](https://github.com/d-vegapunk/live-server.nvim) - a fork of ⤵️
     -  💯 [barrett-ruth/live-server.nvim](https://github.com/barrett-ruth/live-server.nvim) - a groundbreaking advancement from ⤵️
         - 💥 [aurum77/live-server.nvim](https://github.com/aurum77/live-server.nvim) - a plugin to integrate live-server into Neovim.
